@@ -33,7 +33,7 @@ private static final String BROWSER_DRIVER_PATH = "src/test/resources/chromedriv
 
 private final static String MEDIUM = "MEDIUM";
 private final static String HIGH = "HIGH";
-private static ScanningProxy zapScanner;
+private static ScanningProxy zapScanner;	
 private static Spider zapSpider;
 private WebDriver driver;
 private WebSiteNavigation siteNavigation;
@@ -56,8 +56,8 @@ private final static String[] policyNames =
     
     private static void startZap() throws Exception {
 	  System.out.println("Starting ZAP..."); 
-	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/zaproxy/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
-	  pb.directory(new File("/usr/local/zaproxy/").getAbsoluteFile());
+	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/ZAP_2.9.0/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
+	  pb.directory(new File("/usr/local/ZAP_2.9.0/").getAbsoluteFile());
 	  pb.start(); 
 	  System.out.println("Waiting for ZAP...");
 	 }
