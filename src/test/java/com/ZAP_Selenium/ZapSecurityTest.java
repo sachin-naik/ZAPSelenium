@@ -29,7 +29,7 @@ private static final String ZAP_PROXYHOST = "localhost";
 private static final int ZAP_PROXYPORT = 8098;
 private static final String ZAP_APIKEY = null;
 // Provide Chrome driver path
-private static final String BROWSER_DRIVER_PATH = "/home/supernova/Work/ZapSelenium/chromedriver_linux64/chromedriver";
+private static final String BROWSER_DRIVER_PATH = "src/test/resources/chromedriver";
 
 private final static String MEDIUM = "MEDIUM";
 private final static String HIGH = "HIGH";
