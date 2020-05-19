@@ -29,7 +29,7 @@ private static final String ZAP_PROXYHOST = "localhost";
 private static final int ZAP_PROXYPORT = 8098;
 private static final String ZAP_APIKEY = null;
 // Provide Chrome driver path
-private static final String BROWSER_DRIVER_PATH = "C:\\chromedriver.exe";
+private static final String BROWSER_DRIVER_PATH = "/home/supernova/Work/ZapSelenium/chromedriver_linux64/chromedriver";
 
 private final static String MEDIUM = "MEDIUM";
 private final static String HIGH = "HIGH";
@@ -56,8 +56,8 @@ private final static String[] policyNames =
     
     private static void startZap() throws Exception {
 	  System.out.println("Starting ZAP..."); 
-	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","C:/Program Files/OWASP/Zed Attack Proxy/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
-	  pb.directory(new File("C:\\Program Files\\OWASP\\Zed Attack Proxy").getAbsoluteFile());
+	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/zaproxy/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
+	  pb.directory(new File("/usr/local/zaproxy/").getAbsoluteFile());
 	  pb.start(); 
 	  System.out.println("Waiting for ZAP...");
 	 }
