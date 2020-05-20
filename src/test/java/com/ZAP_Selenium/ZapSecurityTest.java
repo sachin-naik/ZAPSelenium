@@ -56,7 +56,7 @@ private final static String[] policyNames =
     
     private static void startZap() throws Exception {
 	  System.out.println("Starting ZAP..."); 
-	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/ZAP_2.9.0/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"", "config api.disablekey=true");
+	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/ZAP_2.9.0/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"", "config", "api.disablekey=true");
 	  pb.directory(new File("/usr/local/ZAP_2.9.0/").getAbsoluteFile());
 	  pb.start(); 
 	  System.out.println("Waiting for ZAP...");
