@@ -26,10 +26,10 @@ public class ZapSecurityTest {
  */
 static Logger log = Logger.getLogger(ZapSecurityTest.class.getName());
 private static final String ZAP_PROXYHOST = "localhost";
-private static final int ZAP_PROXYPORT = 8098;
+private static final int ZAP_PROXYPORT = 8080;
 private static final String ZAP_APIKEY = null;
 // Provide Chrome driver path
-private static final String BROWSER_DRIVER_PATH = "C:\\chromedriver.exe";
+private static final String BROWSER_DRIVER_PATH = "src/test/resources/chromedriver";
 
 private final static String MEDIUM = "MEDIUM";
 private final static String HIGH = "HIGH";
@@ -56,8 +56,8 @@ private final static String[] policyNames =
     
     private static void startZap() throws Exception {
 	  System.out.println("Starting ZAP..."); 
-	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","C:/Program Files/OWASP/Zed Attack Proxy/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
-	  pb.directory(new File("C:\\Program Files\\OWASP\\Zed Attack Proxy").getAbsoluteFile());
+	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/ZAP_2.9.0/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
+	  pb.directory(new File("/usr/local/ZAP_2.9.0/").getAbsoluteFile());
 	  pb.start(); 
 	  System.out.println("Waiting for ZAP...");
 	 }
