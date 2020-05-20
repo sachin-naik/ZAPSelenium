@@ -26,7 +26,7 @@ public class ZapSecurityTest {
  */
 static Logger log = Logger.getLogger(ZapSecurityTest.class.getName());
 private static final String ZAP_PROXYHOST = "localhost";
-private static final int ZAP_PROXYPORT = 8080;
+private static final int ZAP_PROXYPORT = 8098;
 private static final String ZAP_APIKEY = null;
 // Provide Chrome driver path
 private static final String BROWSER_DRIVER_PATH = "src/test/resources/chromedriver";
@@ -56,8 +56,8 @@ private final static String[] policyNames =
     
     private static void startZap() throws Exception {
 	  System.out.println("Starting ZAP..."); 
-	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/ZAP_2.9.0/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
-	  pb.directory(new File("/usr/local/ZAP_2.9.0/").getAbsoluteFile());
+	  ProcessBuilder pb = new ProcessBuilder("java", "-jar","/usr/local/zaproxy/zap-2.9.0.jar","-daemon","-port", ZAP_PROXYPORT+"");
+	  pb.directory(new File("/usr/local/zaproxy/").getAbsoluteFile());
 	  pb.start(); 
 	  System.out.println("Waiting for ZAP...");
 	 }
@@ -95,10 +95,10 @@ private final static String[] policyNames =
 //	    zapSpider=(Spider) zapScanner;
 //	    log.info("Created client to ZAP API");
 	    // Create driver object
-	    driver = BrowserDriverFactory.createChromeDriver(createZapProxyConfiguration(), BROWSER_DRIVER_PATH);
-	    siteNavigation = new WebSiteNavigation(driver);
-	    // First test the "Register a new user"
-	    siteNavigation.registerNewUser();
+// 	    driver = BrowserDriverFactory.createChromeDriver(createZapProxyConfiguration(), BROWSER_DRIVER_PATH);
+// 	    siteNavigation = new WebSiteNavigation(driver);
+// 	    // First test the "Register a new user"
+// 	    siteNavigation.registerNewUser();
     }
     /*
      * Method to close the driver connection
@@ -227,12 +227,12 @@ private final static String[] policyNames =
     {
     log.info("Spidering started");
     // Configure spider settings
-    zapSpider.excludeFromSpider(WebSiteNavigation.LOGOUT_URL);
+    // zapSpider.excludeFromSpider(WebSiteNavigation.LOGOUT_URL);
     zapSpider.setThreadCount(5);
     zapSpider.setMaxDepth(5);
     zapSpider.setPostForms(false);
     // Execute the ZAP spider
-    zapSpider.spider(WebSiteNavigation.BASE_URL);
+    zapSpider.spider("http://demo.testfire.net/");
     int currentSpiderID = zapSpider.getLastSpiderScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
@@ -260,7 +260,7 @@ private final static String[] policyNames =
     {
     log.info("Scanning started");
     // Execute the ZAP scanner
-    zapScanner.scan(WebSiteNavigation.BASE_URL);
+    zapScanner.scan("http://demo.testfire.net/");
     int currentScanId = zapScanner.getLastScannerScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
@@ -287,7 +287,7 @@ private final static String[] policyNames =
     @Test
     public void testVulnerabilitiesBeforeLogin()
     {
-    siteNavigation.navigateBeforeLogin();
+//     siteNavigation.navigateBeforeLogin();
     // Using ZAP Spider
     log.info("Started spidering");
     spiderWithZap();
@@ -311,27 +311,27 @@ private final static String[] policyNames =
      * spiderWithZAP, setAlert_AttackStrength, scanWithZAP, filterAlerts, and 
      * log the found alerts and assert the count of alerts
      */
-    @Test
-    public void testVulnerabilitiesAfterLogin()
-    {
-    siteNavigation.loginAsUser();
-    siteNavigation.navigateAfterLogin();
-    // Using ZAP Spider
-    log.info("Started spidering");
-    spiderWithZap();
-    log.info("Ended spidering");
-    // Setting alert and attack
-    setAlert_AttackStrength();
-    zapScanner.setEnablePassiveScan(true);
-    // Using ZAP Scanner
-    log.info("Started scanning");
-    scanWithZap();
-    log.info("Ended scanning");
-    List<Alert> generatedAlerts = filterAlerts(zapScanner.getAlerts());
-    for (Alert alert : generatedAlerts)
-    {
-            log.info("Alert: "+alert.getAlert()+" at URL: "+alert.getUrl()+" Parameter: "+alert.getParam()+" CWE ID: "+alert.getCweId());
-        }
-        assertThat(generatedAlerts.size(), equalTo(0));
-    }
+//     @Test
+//     public void testVulnerabilitiesAfterLogin()
+//     {
+//     siteNavigation.loginAsUser();
+//     siteNavigation.navigateAfterLogin();
+//     // Using ZAP Spider
+//     log.info("Started spidering");
+//     spiderWithZap();
+//     log.info("Ended spidering");
+//     // Setting alert and attack
+//     setAlert_AttackStrength();
+//     zapScanner.setEnablePassiveScan(true);
+//     // Using ZAP Scanner
+//     log.info("Started scanning");
+//     scanWithZap();
+//     log.info("Ended scanning");
+//     List<Alert> generatedAlerts = filterAlerts(zapScanner.getAlerts());
+//     for (Alert alert : generatedAlerts)
+//     {
+//             log.info("Alert: "+alert.getAlert()+" at URL: "+alert.getUrl()+" Parameter: "+alert.getParam()+" CWE ID: "+alert.getCweId());
+//         }
+//         assertThat(generatedAlerts.size(), equalTo(0));
+//     }
 }
