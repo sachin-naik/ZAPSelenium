@@ -95,10 +95,10 @@ private final static String[] policyNames =
 //	    zapSpider=(Spider) zapScanner;
 //	    log.info("Created client to ZAP API");
 	    // Create driver object
-	    driver = BrowserDriverFactory.createChromeDriver(createZapProxyConfiguration(), BROWSER_DRIVER_PATH);
-	    siteNavigation = new WebSiteNavigation(driver);
-	    // First test the "Register a new user"
-	    siteNavigation.registerNewUser();
+// 	    driver = BrowserDriverFactory.createChromeDriver(createZapProxyConfiguration(), BROWSER_DRIVER_PATH);
+// 	    siteNavigation = new WebSiteNavigation(driver);
+// 	    // First test the "Register a new user"
+// 	    siteNavigation.registerNewUser();
     }
     /*
      * Method to close the driver connection
@@ -227,12 +227,12 @@ private final static String[] policyNames =
     {
     log.info("Spidering started");
     // Configure spider settings
-    zapSpider.excludeFromSpider(WebSiteNavigation.LOGOUT_URL);
+//     zapSpider.excludeFromSpider(WebSiteNavigation.LOGOUT_URL);
     zapSpider.setThreadCount(5);
     zapSpider.setMaxDepth(5);
     zapSpider.setPostForms(false);
     // Execute the ZAP spider
-    zapSpider.spider(WebSiteNavigation.BASE_URL);
+    zapSpider.spider("http://demo.testfire.net/");
     int currentSpiderID = zapSpider.getLastSpiderScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
@@ -260,7 +260,7 @@ private final static String[] policyNames =
     {
     log.info("Scanning started");
     // Execute the ZAP scanner
-    zapScanner.scan(WebSiteNavigation.BASE_URL);
+    zapScanner.scan("http://demo.testfire.net/");
     int currentScanId = zapScanner.getLastScannerScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
