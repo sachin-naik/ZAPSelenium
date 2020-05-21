@@ -26,7 +26,7 @@ public class ZapSecurityTest {
  */
 static Logger log = Logger.getLogger(ZapSecurityTest.class.getName());
 private static final String ZAP_PROXYHOST = "localhost";
-private static final int ZAP_PROXYPORT = 8098;
+private static final int ZAP_PROXYPORT = 8080;
 private static final String ZAP_APIKEY = null;
 // Provide Chrome driver path
 private static final String BROWSER_DRIVER_PATH = "src/test/resources/chromedriver";
