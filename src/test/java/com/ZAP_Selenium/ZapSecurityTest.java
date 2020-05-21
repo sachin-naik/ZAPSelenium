@@ -232,7 +232,7 @@ private final static String[] policyNames =
     zapSpider.setMaxDepth(5);
     zapSpider.setPostForms(false);
     // Execute the ZAP spider
-    zapSpider.spider("http://demo.testfire.net/");
+    zapSpider.spider("http://15.206.178.171:8081/bodgeit/");
     int currentSpiderID = zapSpider.getLastSpiderScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
@@ -260,7 +260,7 @@ private final static String[] policyNames =
     {
     log.info("Scanning started");
     // Execute the ZAP scanner
-    zapScanner.scan("http://demo.testfire.net/");
+    zapScanner.scan("http://15.206.178.171:8081/bodgeit/");
     int currentScanId = zapScanner.getLastScannerScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
