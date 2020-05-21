@@ -25,7 +25,7 @@ public class ZapSecurityTest {
  * Provide details about ZAP Proxy
  */
 static Logger log = Logger.getLogger(ZapSecurityTest.class.getName());
-private static final String ZAP_PROXYHOST = "localhost";
+private static final String ZAP_PROXYHOST = "13.233.23.147";
 private static final int ZAP_PROXYPORT = 8098;
 private static final String ZAP_APIKEY = null;
 // Provide Chrome driver path
@@ -232,7 +232,7 @@ private final static String[] policyNames =
     zapSpider.setMaxDepth(5);
     zapSpider.setPostForms(false);
     // Execute the ZAP spider
-    zapSpider.spider("http://15.206.178.171:8081/bodgeit/");
+    zapSpider.spider("http://13.233.201.98:8081/bodgeit/");
     int currentSpiderID = zapSpider.getLastSpiderScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
@@ -260,7 +260,7 @@ private final static String[] policyNames =
     {
     log.info("Scanning started");
     // Execute the ZAP scanner
-    zapScanner.scan("http://15.206.178.171:8081/bodgeit/");
+    zapScanner.scan("http://13.233.201.98:8081/bodgeit/");
     int currentScanId = zapScanner.getLastScannerScanId();
     int progressPercent  = 0;
         while (progressPercent < 100) {
