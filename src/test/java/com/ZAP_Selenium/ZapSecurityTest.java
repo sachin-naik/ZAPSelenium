@@ -69,7 +69,7 @@ private final static String[] policyNames =
 	 
 	 @BeforeClass
 	 public static void startZAP() throws Exception {
-		 startZap();
+// 		 startZap();
 	    // Configure ZAP Scanner
 	    zapScanner = new ZAProxyScanner(ZAP_PROXYHOST, ZAP_PROXYPORT, ZAP_APIKEY);
 	    // Start new session
