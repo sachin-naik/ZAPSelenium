@@ -107,7 +107,7 @@ private final static String[] policyNames =
     public void tearDown() throws Exception
     {
 //    	generateZapReport();
-    	driver.quit();
+//     	driver.quit();
     }
     
     @AfterClass
@@ -287,7 +287,7 @@ private final static String[] policyNames =
     @Test
     public void testVulnerabilitiesBeforeLogin()
     {
-    siteNavigation.navigateBeforeLogin();
+//     siteNavigation.navigateBeforeLogin();
     // Using ZAP Spider
     log.info("Started spidering");
     spiderWithZap();
@@ -311,27 +311,27 @@ private final static String[] policyNames =
      * spiderWithZAP, setAlert_AttackStrength, scanWithZAP, filterAlerts, and 
      * log the found alerts and assert the count of alerts
      */
-    @Test
-    public void testVulnerabilitiesAfterLogin()
-    {
-    siteNavigation.loginAsUser();
-    siteNavigation.navigateAfterLogin();
-    // Using ZAP Spider
-    log.info("Started spidering");
-    spiderWithZap();
-    log.info("Ended spidering");
-    // Setting alert and attack
-    setAlert_AttackStrength();
-    zapScanner.setEnablePassiveScan(true);
-    // Using ZAP Scanner
-    log.info("Started scanning");
-    scanWithZap();
-    log.info("Ended scanning");
-    List<Alert> generatedAlerts = filterAlerts(zapScanner.getAlerts());
-    for (Alert alert : generatedAlerts)
-    {
-            log.info("Alert: "+alert.getAlert()+" at URL: "+alert.getUrl()+" Parameter: "+alert.getParam()+" CWE ID: "+alert.getCweId());
-        }
-        assertThat(generatedAlerts.size(), equalTo(0));
-    }
+//     @Test
+//     public void testVulnerabilitiesAfterLogin()
+//     {
+//     siteNavigation.loginAsUser();
+//     siteNavigation.navigateAfterLogin();
+//     // Using ZAP Spider
+//     log.info("Started spidering");
+//     spiderWithZap();
+//     log.info("Ended spidering");
+//     // Setting alert and attack
+//     setAlert_AttackStrength();
+//     zapScanner.setEnablePassiveScan(true);
+//     // Using ZAP Scanner
+//     log.info("Started scanning");
+//     scanWithZap();
+//     log.info("Ended scanning");
+//     List<Alert> generatedAlerts = filterAlerts(zapScanner.getAlerts());
+//     for (Alert alert : generatedAlerts)
+//     {
+//             log.info("Alert: "+alert.getAlert()+" at URL: "+alert.getUrl()+" Parameter: "+alert.getParam()+" CWE ID: "+alert.getCweId());
+//         }
+//         assertThat(generatedAlerts.size(), equalTo(0));
+//     }
 }
